@@ -1,6 +1,6 @@
 
 stations_dir=/home/lojze/muska_ripanje/di_postaje/
-out_dir=/home/lojze/muska_ripanje/out
+out_dir=/home/lojze/muska_ripanje/out3
 wanted_gen="ambient
 bigroomhouse
 breaks
@@ -16,6 +16,63 @@ clubdubstep
 clubsounds
 cosmicdowntempo
 darkdnb"
+wanted_gen="deephouse
+deepnudisco
+deeptech
+discohouse
+djmixes
+downtempolounge
+drumandbass
+dubstep
+eclectronica
+electrohouse
+electronicpioneers
+electropop
+epictrance
+eurodance
+funkyhouse
+futuresynthpop
+gabber
+glitchhop
+goapsy
+handsup
+"
+wanted_gen="hardcore
+harddance
+hardstyle
+hardtechno
+house
+latinhouse
+liquiddnb
+liquiddubstep
+lounge
+mainstage
+minimal
+moombahton
+oldschoolacid
+oldschoolelectronica
+progressive
+progressivepsy
+psybient
+psychill
+"
+wanted_gen="russianclubhits
+sankeys
+scousehouse
+soulfulhouse
+spacemusic
+techhouse
+techno
+trance
+trap
+tribalhouse
+ukgarage
+umfradio
+undergroundtechno
+vocalchillout
+vocallounge
+vocaltrance
+"
 
 cd $stations_dir
 for f in *; do
@@ -25,7 +82,9 @@ for f in *; do
     if [ $(echo $"$wanted_gen" | egrep "^$genere\$" | wc -l) -eq 1 ]; then
         echo $genere
         mkdir -p "$out_dir/$genere"
+        sleep 1 # some delay
         screen -d -m -S streamripper_$genere streamripper $streaming_url -s -d "$out_dir/$genere" -l 36000 # for 10 hours
+        true
     fi
 done
 
