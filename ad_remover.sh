@@ -16,6 +16,7 @@ for f in *aac; do
     if [[ "$f" =~ .*Digitally\ Imported.* ]] \
            || [[ "$f" =~ .*Choose\ premium.* ]] \
            || [[ "$f" =~ .*Job\ Opportunity\ at\ DI.* ]] \
+           || [[ "$f" =~ .*Black\ Hole\ Recordings\ Radio.* ]] \
            || [[ "$f" =~ .*More\ of\ the\ show\ after\ these\ messages.* ]]; then
         if [ "$2" == "confirm" ]; then
             echo "removing $f"
