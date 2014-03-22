@@ -1,5 +1,6 @@
 
 stations_dir=/home/lojze/muska_ripanje/di_postaje/
+stations_dir=/home/lojze/muska_ripanje/sky_stations/
 out_dir=/home/lojze/muska_ripanje/out3
 wanted_gen="ambient
 bigroomhouse
@@ -73,11 +74,41 @@ vocalchillout
 vocallounge
 vocaltrance
 "
+# skyfm
+wanted_gen="60srock
+80sdance
+80srock
+hit90s
+90srnb
+beatles
+altrock
+americansongbook
+bebop
+hit60s
+the80s
+bossanova
+cafedeparis
+guitar
+classicalpianotrios
+classicmotown
+classicrap
+classicrock
+clubbollywood
+compactdiscoveries
+christian
+country
+dancehits
+"
 
 cd $stations_dir
 for f in *; do
-    streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
-    genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"di_")+3, index($1,"_aac")-index($1,"di_")-3) }')
+    if [ $(cat "$f" | grep File1| grep sky.fm | wc -l) -eq 1 ]; then
+        streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
+        genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"sky_")+4, index($1,"_aac")-index($1,"sky_")-4) }')
+    else
+        streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
+        genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"di_")+3, index($1,"_aac")-index($1,"di_")-3) }')
+    fi
     #echo $streaming_url
     if [ $(echo $"$wanted_gen" | egrep "^$genre\$" | wc -l) -eq 1 ]; then
         echo $genre
