@@ -1,4 +1,4 @@
-#$1 is a direcotory of generes (directory which contains directories)
+#$1 is a direcotory of genres (directory which contains directories)
 #$2 can be "list_files" to list which files has been found
      # or "confirm" if you want do delete files which has been found
      # or "list_incomplete" to list which incomplete directories has been found
@@ -19,20 +19,20 @@ else
     exit 2
 fi 
 
-for genere in *; do
+for genre in *; do
     if [ "$2" == "list_files" ]; then
-        bash $AD_REMOVER "$genere" 
+        bash $AD_REMOVER "$genre" 
     elif [ "$2" == "confirm" ]; then
-        bash $AD_REMOVER "$genere" $2
+        bash $AD_REMOVER "$genre" $2
     elif [ "$2" == "list_incomplete" ]; then
-        ls -ld "$genere"/incomplete 2>/dev/null >&2
+        ls -ld "$genre"/incomplete 2>/dev/null >&2
         if [ $? -eq 0 ]; then
-            echo $genere yes
+            echo $genre yes
         else
-            echo $genere no
+            echo $genre no
         fi 
     elif [ "$2" == "remove_incomplete" ]; then
-        rm -rf "$genere"/incomplete
+        rm -rf "$genre"/incomplete
     fi
 done
 

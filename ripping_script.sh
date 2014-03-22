@@ -77,13 +77,13 @@ vocaltrance
 cd $stations_dir
 for f in *; do
     streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
-    genere=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"di_")+3, index($1,"_aac")-index($1,"di_")-3) }')
+    genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"di_")+3, index($1,"_aac")-index($1,"di_")-3) }')
     #echo $streaming_url
-    if [ $(echo $"$wanted_gen" | egrep "^$genere\$" | wc -l) -eq 1 ]; then
-        echo $genere
-        mkdir -p "$out_dir/$genere"
+    if [ $(echo $"$wanted_gen" | egrep "^$genre\$" | wc -l) -eq 1 ]; then
+        echo $genre
+        mkdir -p "$out_dir/$genre"
         sleep 1 # some delay
-        screen -d -m -S streamripper_$genere streamripper $streaming_url -s -d "$out_dir/$genere" -l 36000 # for 10 hours
+        screen -d -m -S streamripper_$genre streamripper $streaming_url -s -d "$out_dir/$genre" -l 36000 # for 10 hours
         true
     fi
 done
