@@ -15,6 +15,7 @@ fi
 for f in *aac; do
     if [[ "$f" =~ .*Digitally\ Imported.* ]] \
            || [[ "$f" =~ .*Choose\ premium.* ]] \
+           || [[ "$f" =~ .*SKY.FM\ Radio\ TSTAG.* ]] \
            || [[ "$f" =~ .*Job\ Opportunity\ at\ DI.* ]] \
            || [[ "$f" =~ .*Black\ Hole\ Recordings\ Radio.* ]] \
            || [[ "$f" =~ .*More\ of\ the\ show\ after\ these\ messages.* ]]; then
