@@ -13,7 +13,10 @@ if [ $? -ne 0 ]; then
 fi
 
 for f in *aac; do
-    if [[ "$f" =~ .*Digitally\ Imported.* ]] || [[ "$f" =~ .*Choose\ premium.* ]] || [[ "$f" =~ .*Job\ Opportunity\ at\ DI.* ]]; then
+    if [[ "$f" =~ .*Digitally\ Imported.* ]] \
+           || [[ "$f" =~ .*Choose\ premium.* ]] \
+           || [[ "$f" =~ .*Job\ Opportunity\ at\ DI.* ]] \
+           || [[ "$f" =~ .*More\ of\ the\ show\ after\ these\ messages.* ]]; then
         if [ "$2" == "confirm" ]; then
             echo "removing $f"
             rm "$f"
