@@ -99,17 +99,23 @@ christian
 country
 dancehits
 "
+#radiotunes
+wanted_gen="softrock
+"
 
 cd $stations_dir
 for f in *; do
     if [ $(cat "$f" | grep File1| grep sky.fm | wc -l) -eq 1 ]; then
         streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
         genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"sky_")+4, index($1,"_aac")-index($1,"sky_")-4) }')
+    elif [ $(cat "$f" | grep File1| grep radiotunes | wc -l) -eq 1 ]; then
+        streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
+        genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"nes_")+4, index($1,"_aac")-index($1,"nes_")-4) }')
     else
         streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
-        genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"di_")+3, index($1,"_aac")-index($1,"di_")-3) }')
+        genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"sky_")+4, index($1,"_aac")-index($1,"sky_")-4) }')
     fi
-    #echo $streaming_url
+    #echo "$genre $streaming_url"
     if [ $(echo $"$wanted_gen" | egrep "^$genre\$" | wc -l) -eq 1 ]; then
         echo $genre
         mkdir -p "$out_dir/$genre"
