@@ -18,7 +18,8 @@ for f in *aac; do
            || [[ "$f" =~ .*SKY.FM\ Radio\ TSTAG.* ]] \
            || [[ "$f" =~ .*Job\ Opportunity\ at\ DI.* ]] \
            || [[ "$f" =~ .*Black\ Hole\ Recordings\ Radio.* ]] \
-           || [[ "$f" =~ .*More\ of\ the\ show\ after\ these\ messages.* ]]; then
+           || [[ "$f" =~ .*More\ of\ the\ show\ after\ these\ messages.* ]] \
+           || [[ "$f" =~ .*\ -\ RadioTunes.com.* ]]; then
         if [ "$2" == "confirm" ]; then
             echo "removing $f"
             rm "$f"

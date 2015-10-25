@@ -32,7 +32,11 @@ for genre in *; do
             echo $genre no
         fi 
     elif [ "$2" == "remove_incomplete" ]; then
-        rm -rf "$genre"/incomplete
+        ls -ld "$genre"/incomplete 2>/dev/null >&2
+        if [ $? -eq 0 ]; then
+            echo $genre
+            rm -rf "$genre"/incomplete
+        fi 
     fi
 done
 
