@@ -6,17 +6,15 @@ awk screen streamripper
 
 What to do before first usage:
 ==============
-in ripping_script.sh correct paths for directory where stations are placed and directory where new songs will be placed
-currently in script:
 
-    stations_dir=/home/lojze/muska_ripanje/di_postaje/
-    out_dir=/home/lojze/muska_ripanje/out3
+* You need to use special streamripper which can fake http referer https://github.com/predkambrij/streamripper
+* Specify which generes would you like to rip in riping_script.sh by modifying variable wanted_gen. Prefix with "_" if would you like to skip, but keep in the list
 
-In the bottom of listed generes add new definiton of variable wanted_gen or correct the last one where you specify what you want that will be ripped
-example:
+Example:
 
-    wanted_gen="russianclubhits
-    sankeys
+    wanted_gen="
+    russianclubhits
+    _sankeys
     scousehouse
     "
 
