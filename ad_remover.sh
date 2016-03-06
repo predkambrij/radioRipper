@@ -11,10 +11,20 @@ if [ $? -ne 0 ]; then
     echo "Path $1 doesn't exists"
     exit 1
 fi
+if [ "*aac" == "$(echo *aac)" ]; then
+    echo "No files in $1"
+    exit 0
+fi
 
 for f in *aac; do
-    if [[ "$f" =~ .*Digitally\ Imported.* ]] \
+    filesize=$(ls -l -- "$f" | awk '{print $5}')
+    if [ "$filesize" -lt 100000 ]; then
+        echo "removing $f"
+        rm "$f"
+    elif [[ "$f" =~ .*Digitally\ Imported.* ]] \
            || [[ "$f" =~ .*Choose\ premium.* ]] \
+           || [[ "$f" =~ .*\ -\ DI.fm.* ]] \
+           || [[ "$f" =~ .*\ DI\ Radio.* ]] \
            || [[ "$f" =~ .*SKY.FM\ Radio\ TSTAG.* ]] \
            || [[ "$f" =~ .*Job\ Opportunity\ at\ DI.* ]] \
            || [[ "$f" =~ .*Black\ Hole\ Recordings\ Radio.* ]] \

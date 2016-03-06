@@ -1,129 +1,232 @@
 
-stations_dir=/home/lojze/muska_ripanje/di_postaje/
-stations_dir=/home/lojze/muska_ripanje/sky_stations/
-out_dir=/home/lojze/muska_ripanje/out3
-wanted_gen="ambient
-bigroomhouse
-breaks
-chillhop
-chilloutdreams
-chillout
-chillstep
-classiceurodance
-classiceurodisco
-classictrance
-classicvocaltrance
-clubdubstep
-clubsounds
-cosmicdowntempo
-darkdnb"
-wanted_gen="deephouse
-deepnudisco
-deeptech
-discohouse
-djmixes
-downtempolounge
-drumandbass
-dubstep
-eclectronica
-electrohouse
-electronicpioneers
-electropop
-epictrance
-eurodance
-funkyhouse
-futuresynthpop
-gabber
-glitchhop
-goapsy
-handsup
-"
-wanted_gen="hardcore
-harddance
-hardstyle
-hardtechno
-house
-latinhouse
-liquiddnb
-liquiddubstep
-lounge
-mainstage
-minimal
-moombahton
-oldschoolacid
-oldschoolelectronica
-progressive
-progressivepsy
-psybient
-psychill
-"
-wanted_gen="russianclubhits
-sankeys
-scousehouse
-soulfulhouse
-spacemusic
-techhouse
-techno
-trance
-trap
-tribalhouse
-ukgarage
-umfradio
-undergroundtechno
-vocalchillout
-vocallounge
-vocaltrance
-"
-# skyfm
-wanted_gen="60srock
-80sdance
+wanted_gen="
+hit00s
+00srnb
+60srock
 80srock
+80saltnnewwave
+80sdance
 hit90s
 90srnb
-beatles
 altrock
+ambient
 americansongbook
+baroque
 bebop
 hit60s
 the80s
+bluesrock
+belero
 bossanova
 cafedeparis
-guitar
-classicalpianotrios
-classicmotown
+chillout
 classicrap
+classicmotown
 classicrock
+guitar
+classicalperiod
+classicalpianotrios
 clubbollywood
-compactdiscoveries
 christian
 country
+cubanlounge
+datempolounge
 dancehits
+davekoz
+discoparty
+downtempolounge
+dreamscapes
+edmfest
+eurodance
+flamenco
+hardrock
+hit70s
+indierock
+jazzclassics
+jpop
+latinpophits
+latinrock
+lounge
+lovemusic
+meditation
+mellowjazz
+mellowsmoothjazz
+metal
+modernblues
+modernrock
+classical
+soundtracks
+mozart
+nature
+newage
+nortena
+oldschoolfunknsoul
+oldies
+pianojazz
+poprock
+reggaeton
+relaxation
+relaxingambientpiano
+romantic
+romantica
+romanticalatina
+rootsreggae
+salsa
+sleeprelaxation
+slowjams
+smoothbeats
+smoothbossanova
+smoothjazz
+smoothjazz247
+smoothlounge
+softrock
+solopiano
+tango
+tophits
+uptemposmoothjazz
+urbanjamz
+urbanpophits
+vocalchillout
+vocallounge
+vocalnewage
+vocalsmoothjazz
+world
 "
-#radiotunes
-wanted_gen="softrock
+wanted_gen="
+lovemusic
+softrock
+relaxation
+slowjams
+nature
+newage
+smoothlounge
+smoothbeats
+dancehits
+clubbollywood
+80saltnnewwave
+datempolounge
+eurodance
+vocalnewage
+hit70s
+hit90s
+80sdance
+hit00s
+poprock
+"
+# di fm
+wanted_gen="
+_00sclubhits
+_ambient
+_atmosphericbreaks
+_bassnjackinhouse
+_bassline
+bigbeat
+bigroomhouse
+breaks
+chillntropicalhouse
+__chillhop
+__chillout
+chilloutdreams
+chillstep
+__classiceurodance
+classiceurodisco
+__classictrance
+_classicvocaltrance
+_clubdubstep
+_club
+_djmixes
+_darkdnb
+_darkpsytrance
+_deephouse
+_deepnudisco
+_deeptech
+_detroithousentechno
+_discohouse
+_downtempolounge
+_drumandbass
+_drumstep
+_dub
+_dubtechno
+_dubstep
+_ebm
+_eclectronica
+electro
+electroswing
+electronicpioneers
+electronics
+__electropop
+__epictrance
+__eurodance
+_funkyhouse
+_futurebeats
+_futuregarage
+_futuresynthpop
+gabber
+_glitchhop
+goapsy
+_handsup
+__harddance
+__hardtechno
+hardcore
+hardstyle
+_Xhouse
+_idm
+_indiebeats
+_indiedance
+_jazzhouse
+_jungle
+_Xlatinhouse
+_liquiddnb
+_liquiddubstep
+_liquidtrap
+__lounge
+_Xmainstage
+__melodicprogressive
+_minimal
+_Xnightcore
+_nudisco
+_oldschoolacid
+_oldschoolhouse
+_oldschoolrave
+_classictechno
+__progressive
+__progressivepsy
+_Xpsychill
+_Xpsybient
+russianclubhits
+_Xsoulfulhouse
+_Xspacemusic
+_Xtechhouse
+techno
+__trance
+__trap
+_tribalhouse
+_umfradio
+_undergroundtechno
+_Xvocalchillout
+_Xvocallounge
+_Xvocaltrance
 "
 
-cd $stations_dir
-for f in *; do
-    if [ $(cat "$f" | grep File1| grep sky.fm | wc -l) -eq 1 ]; then
-        streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
-        genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"sky_")+4, index($1,"_aac")-index($1,"sky_")-4) }')
-    elif [ $(cat "$f" | grep File1| grep radiotunes | wc -l) -eq 1 ]; then
-        streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
-        genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"nes_")+4, index($1,"_aac")-index($1,"nes_")-4) }')
-    else
-        streaming_url=$(cat "$f" | grep File1|awk '{ print substr($1, 7) }')
-        genre=$(cat "$f" | grep File1|awk '{ print substr($1, index($1,"sky_")+4, index($1,"_aac")-index($1,"sky_")-4) }')
+#out_dir=/opt/docker_volumes/blatnik_org/blog/other/radioRipper/rt
+out_dir=/opt/docker_volumes/blatnik_org/blog/other/radioRipper/di
+agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"
+srbin="/home/lojze/git/streamripper/streamripper"
+#ref="http://www.radiotunes.com"
+ref="http://www.di.fm"
+for genre in $wanted_gen; do
+    if [ "${genre:0:1}" == "_" ]; then
+        continue;
     fi
-    #echo "$genre $streaming_url"
-    if [ $(echo $"$wanted_gen" | egrep "^$genre\$" | wc -l) -eq 1 ]; then
-        echo $genre
-        mkdir -p "$out_dir/$genre"
-        sleep 1 # some delay
-        screen -d -m -S streamripper_$genre streamripper $streaming_url -s -d "$out_dir/$genre" -l 36000 # for 10 hours
-        true
-    fi
+    #streaming_url="http://pub1.radiotunes.com:80/radiotunes_"$genre"_aacplus";
+    streaming_url="http://pub1.di.fm:80/di_"$genre"_aac";
+    echo "genre "$genre;
+    mkdir -p "$out_dir/$genre";
+    sleep 1; # some delay
+    screen -d -m -S streamripper_$genre $srbin $streaming_url -s -d "$out_dir/$genre" -f $ref -u "$agent" -l 36000; # for 10 hours
+    true;
 done
+
 
 
 
