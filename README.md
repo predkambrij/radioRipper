@@ -4,7 +4,7 @@ Special requirements:
 awk screen streamripper
 
 
-What to do before first usage:
+What to do before the first usage:
 ==============
 
 * You need to use special streamripper which can fake http referer https://github.com/predkambrij/streamripper
