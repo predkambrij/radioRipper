@@ -1,0 +1,9 @@
+version: '2'
+services:
+  ripper:
+    build: radioRipper
+    volumes:
+      - ./radioRipper/:/radioRipper
+#  streamripper:
+#    build: streamripper
+
