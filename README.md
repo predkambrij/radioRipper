@@ -3,7 +3,7 @@ Scripts for automate ripping from internet radio and you can remove ADs before y
 Before the first usage:
 ==============
 * cp radioRipper/radioRipper_conf.sample.sh radioRipper_conf.sh
-* Specify which generes would you like to rip by removing prefix "_"
+* Specify which genres would you like to rip by removing prefix "_"
 
 Build
 =====
