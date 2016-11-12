@@ -5,8 +5,8 @@ function _ad_remover() {
         return 1
     fi
     source $config
-    if [ -z "$rt_adds" ]; then
-        echo "all variables (rt_adds) must be set"
+    if [ -z "$rt_ads" ]; then
+        echo "all variables (rt_ads) must be set"
         return 1
     fi
 
@@ -24,6 +24,8 @@ function _ad_remover() {
         echo "No files in $1"
         cd ~-
         return 0
+    else
+        echo "Processing $1"
     fi
 
     for f in *aac; do
@@ -31,11 +33,16 @@ function _ad_remover() {
         if [ "$filesize" -lt 100000 ]; then
             echo "removing $f"
             rm "$f"
+            continue
         fi
-        for add_str in "${rt_adds[@]}"; do
-            if [[ "$f" =~ "$add_str" ]]; then
-                echo "removing $f"
-                rm "$f"
+        for ad_str in "${rt_ads[@]}"; do
+            if [[ "$f" =~ $ad_str ]]; then
+                if [ "$2" == "confirm" ]; then
+                    echo "removing $f"
+                    rm "$f"
+                else
+                    echo "would remove $f"
+                fi
                 break
             fi
         done

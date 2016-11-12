@@ -1,4 +1,4 @@
-declare -a rt_adds=(
+declare -a rt_ads=(
 ".*Digitally Imported.*"
 ".*Choose premium.*"
 ".* - DI.fm.*"
