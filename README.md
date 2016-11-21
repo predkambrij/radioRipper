@@ -68,3 +68,6 @@ See radioRipper_conf.sh There you can add regex definitions which will be used t
 Web browser based aac player
 ============================
 run ```docker-compose build player && docker-compose up  player``` and aac player should be accesible at [http://127.2.2.2:2080/mp3/](http://127.2.2.2:2080/mp3/). Click "Import From Server" to get playlist (the music you ripped).
+
+Note:  
+Currently (as far as I know) only Chromium browser can play aac format.
