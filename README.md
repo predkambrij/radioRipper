@@ -1,4 +1,10 @@
-Scripts for automate ripping from internet radio and you can remove ADs before you play the songs
+Scripts for automate ripping from internet radio and you can remove ADs before you play the songs.  
+There's also (customized) web browser based aac player which can be used to play ripped music (see [docker-compose.yml](https://github.com/predkambrij/radioRipper/blob/master/docker-compose.yml))
+
+Setup
+=====
+* ```git clone git@github.com:predkambrij/radioRipper.git```
+* ```git clone git@github.com:predkambrij/mp3-player.git serverplaylist/player/```
 
 Before the first usage:
 ==============
@@ -7,8 +13,7 @@ Before the first usage:
 
 Build
 =====
-
-    docker-compose build ripper
+```docker-compose build ripper```
 
 Usage examples
 ==============
@@ -58,3 +63,7 @@ You will se something like that:
 
 Side notes: 
 See radioRipper_conf.sh There you can add regex definitions which will be used to remove advertisement songs, add new radio stations and genres.
+
+Web browser based aac player
+============================
+run ```docker-compose build player && docker-compose up  player``` and aac player should be accesible at [http://127.2.2.2:2080/mp3/](http://127.2.2.2:2080/mp3/). Click "Import From Server" to get playlist (the music you ripped).
