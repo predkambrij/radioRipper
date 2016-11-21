@@ -4,11 +4,12 @@ There's also (customized) web browser based aac player which can be used to play
 Setup
 =====
 * ```git clone git@github.com:predkambrij/radioRipper.git```
+* ```cd radioRipper/```
 * ```git clone git@github.com:predkambrij/mp3-player.git serverplaylist/player/```
 
 Before the first usage:
 ==============
-* cp radioRipper/radioRipper_conf.sample.sh radioRipper_conf.sh
+* cp radioRipper/radioRipper_conf.sample.sh radioRipper/radioRipper_conf.sh
 * Specify which genres would you like to rip by removing prefix "_"
 
 Build
