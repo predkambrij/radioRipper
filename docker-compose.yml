@@ -4,6 +4,10 @@ services:
     build: radioRipper
     volumes:
       - ./radioRipper/:/radioRipper
-#  streamripper:
-#    build: streamripper
+  player:
+    build: serverplaylist/
+    volumes:
+      - ./radioRipper/music/:/var/www/mp3/music
+    ports:
+      - "127.2.2.2:2080:80"
 
