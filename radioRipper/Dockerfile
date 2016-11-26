@@ -15,4 +15,4 @@ RUN apt-get -y install git gcc libglib2.0-dev make screen && \
     make -j8 && \
     true
 
-VOLUME ["/radioRipper"]
+VOLUME ["/radioRipper", "/radioRipper/music"]

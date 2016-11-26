@@ -4,10 +4,16 @@ services:
     build: radioRipper
     volumes:
       - ./radioRipper/:/radioRipper
+      - music1:/radioRipper/music
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true
   player:
     build: serverplaylist/
     volumes:
-      - ./radioRipper/music/:/var/www/mp3/music
+      - music1:/var/www/mp3/music
     ports:
       - "127.2.2.2:2080:80"
+volumes:
+  music1:
 
